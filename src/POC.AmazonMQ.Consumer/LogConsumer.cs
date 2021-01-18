@@ -11,7 +11,8 @@ namespace POC.AmazonMQ.Consumer
 {
     public class LogConsumer : ConsumerBase
     {
-        protected override string QueueName => "pricefy-mq.log.message";
+        private readonly ILogger<LogConsumer> _logConsumerLogger;
+        protected override string QueueName => "log.message";
 
         public LogConsumer(
             IMediator mediator,
@@ -21,18 +22,23 @@ namespace POC.AmazonMQ.Consumer
             ILogger<RabbitMqBaseClient> logger) :
             base(mediator, connectionFactory, consumerLogger, logger)
         {
+            _logConsumerLogger = logConsumerLogger;
+        }
+
+        public void ConsumeMessages()
+        {
             try
             {
                 var consumer = new AsyncEventingBasicConsumer(Channel);
                 consumer.Received += OnEventReceived<LogCommand>;
-                
-                var mensagem = Channel.BasicConsume(queue: QueueName, autoAck: false, consumer: consumer);
 
-                logConsumerLogger.LogInformation($"Mensagem recebida: {mensagem}");
+                var mensagem = Channel.BasicConsume(queue: QueueName, autoAck: true, consumer: consumer);
+
+                _logConsumerLogger.LogInformation($"Mensagem recebida: {mensagem}");
             }
             catch (Exception ex)
             {
-                logConsumerLogger.LogCritical(ex, "Falha durante o consumo da mensagem");
+                _logConsumerLogger.LogCritical(ex, "Falha durante o consumo da mensagem");
             }
         }
     }

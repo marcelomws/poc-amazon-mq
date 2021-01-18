@@ -30,7 +30,7 @@ namespace POC.AmazonMQ.Producer
                 };
 
                 _producer.Publish(@event);
-                await Task.Delay(5000, stoppingToken);
+                await Task.Delay(10, stoppingToken);
             }
 
             await Task.CompletedTask;

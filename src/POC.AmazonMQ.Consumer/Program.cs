@@ -22,6 +22,7 @@ namespace POC.AmazonMQ.Consumer
                     services
                         .AddMediatR(Assembly.GetExecutingAssembly())
                         .AddTransient<IRequestHandler<LogCommand, Unit>, LogCommandHandler>()
+                        .AddSingleton<LogConsumer>()
                         .AddHostedService<Worker>() 
                         .AddSingleton(serviceProvider =>
                         {

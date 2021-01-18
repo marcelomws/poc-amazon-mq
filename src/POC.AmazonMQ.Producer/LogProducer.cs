@@ -16,7 +16,7 @@ namespace POC.AmazonMQ.Producer
         {
         }
 
-        protected override string ExchangeName => "pricefy-mq.LoggerExchange";
+        protected override string ExchangeName => "LoggerExchange";
         protected override string RoutingKeyName => "log.message";
         protected override string AppId => "LogProducer";
     }
