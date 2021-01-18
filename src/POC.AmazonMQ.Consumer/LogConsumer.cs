@@ -11,7 +11,7 @@ namespace POC.AmazonMQ.Consumer
 {
     public class LogConsumer : ConsumerBase
     {
-        protected override string QueueName => "CUSTOM_HOST.log.message";
+        protected override string QueueName => "pricefy-mq.log.message";
 
         public LogConsumer(
             IMediator mediator,

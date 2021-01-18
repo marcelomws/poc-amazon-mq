@@ -25,7 +25,7 @@ namespace POC.AmazonMQ.Consumer
                         .AddHostedService<Worker>() 
                         .AddSingleton(serviceProvider =>
                         {
-                            var uri = new Uri("amqps://b-57570d4d-8dc1-4f80-8b7f-50aab9b31aab.mq.us-east-1.amazonaws.com:5671/pricefy-mq");
+                            var uri = new Uri("amqps://b-57570d4d-8dc1-4f80-8b7f-50aab9b31aab.mq.us-east-1.amazonaws.com:5671/");
                             return new ConnectionFactory
                             {
                                 Uri = uri,
