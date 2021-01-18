@@ -41,7 +41,7 @@ namespace POC.AmazonMQ.Core.Consumer
             }
             finally
             {
-                Channel.BasicAck(@event.DeliveryTag, false);
+                Channel.BasicAck(@event.DeliveryTag, true);
             }
         }
     }

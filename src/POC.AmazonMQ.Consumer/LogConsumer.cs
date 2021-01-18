@@ -32,7 +32,7 @@ namespace POC.AmazonMQ.Consumer
                 var consumer = new AsyncEventingBasicConsumer(Channel);
                 consumer.Received += OnEventReceived<LogCommand>;
 
-                var mensagem = Channel.BasicConsume(queue: QueueName, autoAck: true, consumer: consumer);
+                var mensagem = Channel.BasicConsume(queue: QueueName, autoAck: false, consumer: consumer);
 
                 _logConsumerLogger.LogInformation($"Mensagem recebida: {mensagem}");
             }
