@@ -24,10 +24,10 @@ namespace POC.AmazonMQ.Producer
                         .AddSingleton<IRabbitMqProducer<LogIntegrationEvent>, LogProducer>()
                         .AddSingleton(serviceProvider =>
                         {
-                            var uri = new Uri("amqps://b-e09fb1d1-bb30-4531-a321-55a07b8a7033.mq.us-east-1.amazonaws.com:5671/pricefy-MQ");
+                            var uri = new Uri("amqps://b-57570d4d-8dc1-4f80-8b7f-50aab9b31aab.mq.us-east-1.amazonaws.com:5671/pricefy-mq");
                             return new ConnectionFactory
                             {
-                                Uri = uri, UserName="guest", Password = "guest"
+                                Uri = uri, UserName="pricefy", Password = "pricefy@2021"
                             };
                         });
                 });
